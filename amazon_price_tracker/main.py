@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-URL = "https://appbrewery.github.io/instant_pot/"
+URL = "https://www.amazon.com/dp/B075CYMYK6?psc=1&ref_=cm_sw_r_cp_ud_ct_FM9M699VKHTT47YD50Q6"
 header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0"}
 
 response = requests.get(url=URL, headers=header)
 website = response.text
 soup = BeautifulSoup(website, "html.parser")
 
-price_tag = soup.find(name="span", class_="aok-offscreen")
+price_tag = soup.find(name="span", class_="a-price-whole")
 price = float(price_tag.getText().split("$")[1])
 print(price)
 
